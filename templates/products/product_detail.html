@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block title %}
+{{ product.name }}
+{% endblock %}
+
+{% block content %}
+
+<section class="product-detail">
+
+    <div class="product-image">
+
+        {% if product.image %}
+
+            <img
+                src="{{ product.image.url }}"
+                alt="{{ product.name }}">
+
+        {% endif %}
+
+    </div>
+
+    <div class="product-information">
+
+        <h1>
+
+            {{ product.name }}
+
+        </h1>
+
+        <p>
+
+            Category:
+
+            {{ product.category.name }}
+
+        </p>
+
+        <p>
+
+            Price:
+
+            ${{ product.price }}
+
+        </p>
+
+        <p>
+
+            {{ product.description }}
+
+        </p>
+
+        <p>
+
+            Stock:
+
+            {{ product.stock_quantity }}
+
+        </p>
+
+        {% if product.available %}
+
+            <a href="{% url 'cart:add_to_cart' product.id %}">
+
+                Add to Cart
+
+            </a>
+
+        {% else %}
+
+            <p>
+
+                Out of Stock
+
+            </p>
+
+        {% endif %}
+
+    </div>
+
+</section>
+
+{% endblock %}

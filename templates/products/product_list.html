@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block title %}
+Products
+{% endblock %}
+
+{% block content %}
+
+<section class="hero">
+
+    <h1>
+        Welcome to Jewlary Store 
+    </h1>
+
+    <p>
+        Browse our latest products.
+    </p>
+
+</section>
+
+<section class="product-section">
+
+    <h2>
+        Products
+    </h2>
+
+    <div class="product-grid">
+
+        {% for product in products %}
+
+            <div class="product-card">
+
+                {% if product.image %}
+
+                    <img
+                        src="{{ product.image.url }}"
+                        alt="{{ product.name }}">
+
+                {% endif %}
+
+                <h3>
+
+                    {{ product.name }}
+
+                </h3>
+
+                <p>
+
+                    {{ product.category.name }}
+
+                </p>
+
+                <p>
+
+                    ${{ product.price }}
+
+                </p>
+
+                <a href="{% url 'products:product_detail' product.slug %}">
+
+                    View Details
+
+                </a>
+
+            </div>
+
+        {% empty %}
+
+            <p>
+
+                No products available.
+
+            </p>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+{% endblock %}
