@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 
 from pathlib import Path
 import os
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,7 +22,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-b1wngvwz!o=@h197#ph5prc=^-smlbco$&&0nl&^f+m@ttw_)d'
+import os
+
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
@@ -29,7 +32,7 @@ SECRET_KEY = 'django-insecure-b1wngvwz!o=@h197#ph5prc=^-smlbco$&&0nl&^f+m@ttw_)d
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    "https://jewelry-store-1-6ot0.onrender.com",
+    "jewelry-store-1-6ot0.onrender.com",
     "localhost",
     "127.0.0.1",
 ]
@@ -86,14 +89,9 @@ WSGI_APPLICATION = 'ecommerce.wsgi.application'
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'ecommerce_db',
-        'USER': 'root',
-        'PASSWORD': 'loli123,sara',
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
-    }
+    "default": dj_database_url.config(
+        default=os.environ.get("DATABASE_URL")
+    )
 }
 
 # Password validation
