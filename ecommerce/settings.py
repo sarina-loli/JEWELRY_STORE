@@ -30,6 +30,8 @@ DEBUG = False
 
 ALLOWED_HOSTS = [
     "https://jewelry-store-1-6ot0.onrender.com",
+    "localhost",
+    "127.0.0.1",
 ]
 
 # Application definition
