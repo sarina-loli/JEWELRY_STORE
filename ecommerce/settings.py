@@ -33,7 +33,9 @@ ALLOWED_HOSTS = [
     "localhost",
     "127.0.0.1",
 ]
-
+CSRF_TRUSTED_ORIGINS = [
+   "https://jewelry-store-1-6ot0.onrender.com",
+]
 # Application definition
 
 INSTALLED_APPS = [
